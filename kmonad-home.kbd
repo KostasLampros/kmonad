@@ -88,14 +88,16 @@
   files   (cmd-button "~/.config/kmonad/scripts/focus-or-launch.sh Dolphin dolphin")
   slk     (cmd-button "~/.config/kmonad/scripts/focus-or-launch.sh Slack slack")
   code    (cmd-button "~/.config/kmonad/scripts/focus-or-launch.sh Code code") 
-  dbv     (cmd-button "~/.config/kmonad/scripts/focus-or-launch.sh dbeaver dbeaver") 
+  dbv     (cmd-button "~/.config/kmonad/scripts/focus-or-launch.sh dbeaver dbeaver-le") 
+  ida     (cmd-button "~/.config/kmonad/scripts/focus-or-launch.sh idea /opt/idea-IU-261.23567.138/bin/idea.sh") 
+  trm     (cmd-button "~/.config/kmonad/scripts/focus-or-launch.sh Alacritty alacritty") 
 )
 
 
 (deflayer actions
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _     _
-  _    _    _    _    _   @txt   _    _    _    _    _  _    _     _
+  _    _    _    _   @trm @txt   _    _  @ida  _    _  _    _     _
   _    _   @slk @dbv @files  _    _    _    _    _    _    _          _
   _    _    _   @code   _  @browser _    _    _    _    _               _
   _    _    _              _              _    _               _    _    _
