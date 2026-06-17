@@ -9,7 +9,8 @@ set -euo pipefail
 # Your two external keyboards — fill in the exact by-id names.
 # Run: ls /dev/input/by-id/ to find them.
 KEYBOARD_HOME="/dev/input/by-id/usb-ROYUAN_2.4G_Wireless_Keyboard-event-kbd"
-KEYBOARD_WORK="/dev/input/by-path/pci-0000:00:14.0-usb-0:6.3.1:1.0-event-kbd"
+# KEYBOARD_WORK="/dev/input/by-path/pci-0000:00:14.0-usb-0:6.3.1:1.0-event-kbd"
+KEYBOARD_WORK="/dev/input/by-id/usb-Compx_2.4G_Wireless_Receiver-event-kbd"
 
 # Fallback: integrated/built-in keyboard by-id path.
 # Run: ls /dev/input/by-id/ | grep -i "AT\|integrated\|isa"

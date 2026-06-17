@@ -5,7 +5,7 @@ LAUNCH_CMD=("$@")
 mapfile -t results < <(kdotool search --class "$WINDOW_NAME" 2>/dev/null)
 
 if [[ ${#results[@]} -eq 0 ]]; then
-  "${LAUNCH_CMD[@]}" &
+  setsid "${LAUNCH_CMD[@]}" >/dev/null 2>&1 &
 else
   current=$(kdotool getactivewindow 2>/dev/null)
 

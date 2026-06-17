@@ -65,12 +65,14 @@
   up up
   dn down
   lf left
-  rt right)
+  rt right
+  ed end
+  hm home)
 
 (deflayer hyper
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _     _
-  _    _    _    _    _    _    _    _    _    _    _  _    _     _
+  _    _    _    _    _    _    _   @hm  @ed   _    _  _    _     _
   _    _    _    _    _    _   @lf  @dn  @up  @rt   _  _          _
   _    _    _    _    _    _    _    _    _    _    _               _
   _    _    _             @lay1             _    _               _    _    _
@@ -85,7 +87,7 @@
   slk     (cmd-button "~/.config/kmonad/scripts/focus-or-launch.sh Slack slack")
   code    (cmd-button "~/.config/kmonad/scripts/focus-or-launch.sh Code code") 
   dbv     (cmd-button "~/.config/kmonad/scripts/focus-or-launch.sh dbeaver dbeaver-le") 
-  ida     (cmd-button "~/.config/kmonad/scripts/focus-or-launch.sh idea /opt/idea-IU-261.23567.138/bin/idea.sh") 
+  ida     (cmd-button "~/.config/kmonad/scripts/focus-or-launch.sh idea /opt/idea-IU-261.23567.138/bin/idea") 
   trm     (cmd-button "~/.config/kmonad/scripts/focus-or-launch.sh Alacritty alacritty") 
   pst     (cmd-button "~/.config/kmonad/scripts/focus-or-launch.sh Postman postman") 
   obs     (cmd-button "~/.config/kmonad/scripts/focus-or-launch.sh Obsidian obsidian") 

@@ -1,0 +1,34 @@
+# kmonad.service
+# Make a symlink so that this file to /home/kostas/.config/systemd/user/kmonad.service so that it is picked from systemd
+# ln -s /home/kostas/.config/kmonad/kmonad-autostart/kmonad.service /home/kostas/.config/systemd/user/kmonad.service
+
+#
+# Then enable with:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now kmonad.service
+
+[Unit]
+Description=KMonad keyboard remapper (auto-detects keyboard)
+# Start after the input subsystem is ready
+After=systemd-udev-settle.service
+Wants=systemd-udev-settle.service
+
+[Service]
+Type=simple
+
+# Path to the detection + launch script
+ExecStart=%h/.config/kmonad/kmonad_autostart/kmonad-autostart.sh
+
+# If KMonad crashes, wait 3s and retry (handles race conditions at boot)
+Restart=on-failure
+RestartSec=3s
+
+# Give udev a moment to settle before the script runs
+ExecStartPre=/bin/sleep 2
+
+# Log to journald — view with: journalctl --user -u kmonad -f
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
