@@ -22,3 +22,5 @@ else
   next_index=$(((current_index + 1) % ${#results[@]}))
   kdotool windowactivate "${results[$next_index]}"
 fi
+
+dbus-send --type=method_call --dest=org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut string:"MoveMouseToFocus"
