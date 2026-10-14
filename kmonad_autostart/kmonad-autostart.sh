@@ -26,17 +26,38 @@ RUNTIME_CONFIG="/tmp/kmonad-runtime.kbd"
 # KMonad binary path.
 KMONAD_BIN="$(command -v kmonad || echo /usr/bin/kmonad)"
 
+# ─── ARGUMENT PARSING ─────────────────────────────────────────────────────────
+
+# -d: detachable mode — look for the home/work keyboards, falling back to the
+#     built-in one. Without it, the built-in keyboard is used directly.
+DETACHABLE_MODE=0
+
+usage() {
+  echo "Usage: $0 [-d]" >&2
+  echo "  -d  Look for the home/work keyboards (falling back to built-in)." >&2
+  echo "      Without this flag, the built-in keyboard is used directly." >&2
+}
+
+while getopts ":d" opt; do
+  case "$opt" in
+    d) DETACHABLE_MODE=1 ;;
+    *) usage; exit 1 ;;
+  esac
+done
+
 # ─── DETECTION ────────────────────────────────────────────────────────────────
 
 detect_keyboard() {
-  if [[ -e "$KEYBOARD_HOME" ]]; then
-    echo "$KEYBOARD_HOME"
-    return
-  fi
+  if [[ "$DETACHABLE_MODE" -eq 1 ]]; then
+    if [[ -e "$KEYBOARD_HOME" ]]; then
+      echo "$KEYBOARD_HOME"
+      return
+    fi
 
-  if [[ -e "$KEYBOARD_WORK" ]]; then
-    echo "$KEYBOARD_WORK"
-    return
+    if [[ -e "$KEYBOARD_WORK" ]]; then
+      echo "$KEYBOARD_WORK"
+      return
+    fi
   fi
 
   if [[ -e "$KEYBOARD_BUILTIN" ]]; then
